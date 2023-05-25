@@ -1,0 +1,17 @@
+.Header {
+    height: 88px;
+    background: #86D5C7;
+    display: flex;
+    justify-content: space-between;
+}
+
+#Icon{
+    width: 78px;
+    height: 72px;
+    margin-left: 31px;
+    margin-top: 8px;
+    border-radius: 5px;
+
+    color: #DD1B1B;
+    background: #f5f0f0;
+}

@@ -1,0 +1,64 @@
+.f1 {
+    width: 1500px;
+    height: 866.5px;
+    left: 0;
+    top: 303px;
+
+    background: #86D5C7;
+    opacity: 0.45;
+}
+
+.f2 {
+    width: 1273px;
+    height: 999px;
+    left: 307px;
+    top: 103px;
+
+    background: #86D5C7;
+}
+
+.Page {
+    display: flex;
+    justify-content: space-between;
+}
+
+.t1 {
+    /* Medical */
+
+    position: absolute;
+    width: 483px;
+    height: 257px;
+    left: 131px;
+    top: 267px;
+
+    font-family: 'Kadwa', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 128px;
+    line-height: 257px;
+
+    color: #000000;
+
+    -webkit-text-stroke: 2px rgba(156, 245, 213, 0.55);
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.t2 {
+    position: absolute;
+    width: 296px;
+    height: 257px;
+    left: 497px;
+    top: 396px;
+
+    font-family: 'Kadwa', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 128px;
+    line-height: 257px;
+
+    color: #000000;
+
+    -webkit-text-stroke: 2px rgba(156, 245, 213, 0.55);
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}

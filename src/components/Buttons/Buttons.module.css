@@ -1,0 +1,20 @@
+.Buttons{
+    display: flex;
+    justify-content: end;
+    width: 302px;
+    height: 50px;
+    margin-right: 55px;
+    margin-top: 28px;
+}
+
+.Button{
+    width: 100px;
+    height: 33px;
+    background: #86D5C7;
+    border: 0;
+    font-size: 23px;
+    font-family: 'Kadwa', serif;
+    font-style: normal;
+    font-weight: 700;
+    color: #423e3e;
+}

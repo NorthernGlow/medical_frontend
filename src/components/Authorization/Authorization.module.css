@@ -1,0 +1,41 @@
+.Form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#Button {
+    background-color: cadetblue;
+    margin-top: 5px;
+}
+
+.Input {
+    width: 373px;
+    height: 50px;
+    margin: 10px 0;
+}
+
+#paperStyle {
+    padding: 10px 20px 20px 20px;
+    /*width: 417px;*/
+    /*height: 426px;*/
+    margin-top: 160px;
+    margin-right: 20px;
+    text-align: center;
+    background: #EAFEF7;
+}
+
+.header {
+    margin-top: 28px;
+    font-family: "Brush Script MT", cursive;
+    /*font-size: 40px;*/
+    font-style: italic;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 39px;
+}
+
+.Error{
+    color: rgba(200,12,8,0.76);
+    margin-bottom: 0;
+}
