@@ -1,21 +1,32 @@
-.f1 {
-    width: 1500px;
-    height: 866.5px;
-    left: 0;
-    top: 303px;
-
-    background: #86D5C7;
-    opacity: 0.45;
+@font-face {
+    font-family: 'Kadwa-Regular';
+    src: url('../fonts/kadwa-regular.eot'); /* IE 9 Compatibility Mode */
+    src: url('../fonts/kadwa-regular.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+    url('../fonts/kadwa-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/kadwa-regular.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+    url('../fonts/kadwa-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/kadwa-regular.svg#kadwa-regular') format('svg'); /* Chrome < 4, Legacy iOS */
 }
 
-.f2 {
-    width: 1273px;
-    height: 999px;
-    left: 307px;
-    top: 103px;
 
-    background: #86D5C7;
-}
+/*.f1 {*/
+/*    width: 1500px;*/
+/*    height: 866.5px;*/
+/*    left: 0;*/
+/*    top: 303px;*/
+
+/*    background: #86D5C7;*/
+/*    opacity: 0.45;*/
+/*}*/
+
+/*.f2 {*/
+/*    width: 1273px;*/
+/*    height: 999px;*/
+/*    left: 307px;*/
+/*    top: 103px;*/
+
+/*    background: #86D5C7;*/
+/*}*/
 
 .Page {
     display: flex;
@@ -28,12 +39,12 @@
     position: absolute;
     width: 483px;
     height: 257px;
-    left: 131px;
+    left: 251px;
     top: 267px;
 
     font-family: 'Kadwa', serif;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 128px;
     line-height: 257px;
 
@@ -48,12 +59,12 @@
     position: absolute;
     width: 296px;
     height: 257px;
-    left: 497px;
+    left: 617px;
     top: 396px;
 
     font-family: 'Kadwa', serif;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 128px;
     line-height: 257px;
 

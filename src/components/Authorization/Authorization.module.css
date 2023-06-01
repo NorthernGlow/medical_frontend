@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'jsMath-cmti10';
+    src: url('../../fonts/jsmath-cmti10.eot'); /* IE 9 Compatibility Mode */
+    src: url('../../fonts/jsmath-cmti10.eot?#iefix') format('embedded-opentype'), /* IE < 9 */ url('../../fonts/jsmath-cmti10.woff2') format('woff2'), /* Super Modern Browsers */ url('../../fonts/jsmath-cmti10.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */ url('../../fonts/jsmath-cmti10.ttf') format('truetype'), /* Safari, Android, iOS */ url('../../fonts/jsmath-cmti10.svg#jsmath-cmti10') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
 .Form {
     display: flex;
     flex-direction: column;
@@ -5,8 +11,12 @@
 }
 
 #Button {
-    background-color: cadetblue;
-    margin-top: 5px;
+    width: 250px;
+    height: 45px;
+    margin-top: 15px;
+    margin-left: 75px;
+    background: #86D5C7;
+    border-radius: 15px;
 }
 
 .Input {
@@ -15,27 +25,28 @@
     margin: 10px 0;
 }
 
+
 #paperStyle {
     padding: 10px 20px 20px 20px;
-    /*width: 417px;*/
-    /*height: 426px;*/
-    margin-top: 160px;
-    margin-right: 20px;
+    width: 390px;
+    height: 350px;
+    margin-top: 130px;
+    margin-right: 60px;
     text-align: center;
     background: #EAFEF7;
 }
 
 .header {
     margin-top: 28px;
-    font-family: "Brush Script MT", cursive;
+    font-family: "jsMath-cmti10", cursive;
     /*font-size: 40px;*/
     font-style: italic;
     font-weight: 500;
-    font-size: 45px;
+    font-size: 35px;
     line-height: 39px;
 }
 
-.Error{
-    color: rgba(200,12,8,0.76);
+.Error {
+    color: rgba(200, 12, 8, 0.76);
     margin-bottom: 0;
 }

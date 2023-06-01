@@ -5,7 +5,7 @@ import css from "./Authorization.module.css"
 import {useNavigate} from "react-router-dom";
 
 const Authorization = () => {
-    const [login, setLogin] = useState('');
+    const [email, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [answer, setAnswer] = useState(0);
     const [auth,setAuth] = useState(false);
@@ -15,7 +15,7 @@ const Authorization = () => {
     const handleClick = (e) => {
         e.preventDefault()
         setAuth(true);
-        const customer = {login, password}
+        const customer = {email, password}
         fetch('http://localhost:8080/authorization', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -37,12 +37,12 @@ const Authorization = () => {
                 <Paper elevation={3} id={css.paperStyle}>
                     <h1 className={css.header}>Authorization</h1>
                     <form className={css.Form} noValidate autoComplete="off">
-                        <TextField className={css.Input} id="outlined-basic" label="Login" variant="outlined"
+                        <TextField className={css.Input} id="outlined-basic" label="Email" variant="outlined" style={{"margin":"15px 0"}}
                                    type={"text"} fullWidth
-                                   value={login}
+                                   value={email}
                                    onChange={(e) => setLogin(e.target.value)}
                         />
-                        <TextField className={css.Input} id="outlined-basic" label="Password" variant="outlined"
+                        <TextField className={css.Input} id="outlined-basic" label="Password" variant="outlined" style={{"margin":"15px 0"}}
                                    type={"password"} fullWidth
                                    value={password}
                                    onChange={(e) => setPassword(e.target.value)}
