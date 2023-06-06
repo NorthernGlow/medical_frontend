@@ -15,16 +15,17 @@ const Registration = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [hospitals, setHospitals] = useState([]);
-    const [hospital, setHospital] = useState({});
+    const [hospital, setHospital] = useState({})
 
     const [hospitalName, setHospitalName] = useState('');
     const [city, setCity] = useState('');
     const [region, setRegion] = useState('');
     const [district, setDistrict] = useState('');
     const [street, setStreet] = useState('');
-    const [buildingNumber, setBuildingNumber] = useState('');
+    const [numberBuild, setNumberBuild] = useState('');
 
-    const [boxH,setBoxH] = useState(false);
+    const [boxH, setBoxH] = useState(false);
+
 
     const arrPrUk = ["Лікар акушер-гінеколог", "Алерголог - імунолог", "Андролог", "Анестезіолог - реаніматолог", "Ароматерапевт", "Бактеріолог", "Венеролог", "Вертебролог", "Гастроентеролог",
         "Гематолог", "Геріатр (геронтолог)", "Гірудотерапевт", "Гомеопат", "Дерматолог", "Дієтолог", "Ембріолог", "Ендокринолог", "Ендоскопіст", "Епідеміолог", "Еферентолог",
@@ -43,7 +44,43 @@ const Registration = () => {
 
     const handleClick = (e) => {
         e.preventDefault()
-        const customer = {email, password}
+        let customer = {};
+        if (boxH) {
+            const hospital = {hospitalName, city, region, district, street, numberBuild}
+            customer = {name, surname, patronymic, gender, birthDay, profession, hospital, email, password}
+
+            fetch(`http://localhost:8080/registration`, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(customer)
+
+            }).then((res) => res.json())
+                .then((result) => {
+                    localStorage.setItem('doctorId', JSON.stringify(result))
+                    console.log("New doctor added")
+                })
+
+        } else {
+            customer = {name, surname, patronymic, gender, birthDay, profession, email, password}
+
+            fetch(`http://localhost:8080/registration`, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(customer)
+
+            }).then((res) => res.json())
+                .then((result) => {
+                    localStorage.setItem('doctorId', JSON.stringify(result))
+                    fetch(`http://localhost:8080/registration/hospital/${result}`, {
+                        method: "PATCH",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify(hospital)
+                    }).then((res) => console.log(res))
+                        .catch((err) => console.log(err))
+                    console.log("New doctor added")
+                })
+        }
+        navigate(`/doctor`)
 
     }
 
@@ -68,10 +105,25 @@ const Registration = () => {
 
     }, [])
 
-    function changeHospital(e) {
-        setHospital(e.target.value)
-        console.log(hospital);
+
+    function clickAddHospital(e) {
+        e.preventDefault();
+        if (boxH) {
+            setBoxH(false)
+        } else {
+            setBoxH(true)
+        }
     }
+
+    function changeHospital(id) {
+        fetch(`http://localhost:8080/getHospitalById/${id}`)
+            .then((res) => res.json())
+            .then((result) => {
+                setHospital(result)
+            })
+
+    }
+
 
     return (
         <div>
@@ -126,35 +178,78 @@ const Registration = () => {
                             </select>
                         </div>
                         <div className={css.Prof}>
-                            <label className={css.LabelDate}>Лікарня де працюєте:</label>
+                            <label className={css.LabelDate}>Лікарня, де ви працюєте:</label>
                             <div className={css.box}>
                                 <select className="form-control" id={css.formControl}
-                                        onChange={changeHospital}>
+                                >
                                     <option>Вибір лікарні</option>
                                     {
-                                        hospitals.map((value, index) => <option value={value} key={index}>"{value.name}",
+                                        hospitals.map((value, index) => <option value={value} key={index}
+                                                                                onChange={changeHospital(value.id)}>"{value.hospitalName}",
                                             м.{value.city}, {value.region} обл.</option>)
                                     }
                                 </select>
-                                <button className={css.btn} onClick={()=>setBoxH(true)}><AddIcon></AddIcon></button>
+                                <button className={css.btn} onClick={clickAddHospital}><AddIcon></AddIcon></button>
                             </div>
                             {
                                 boxH && <div>
-                                    <TextField className={css.Input} id="outlined-basic" label="Назва лікарні" variant="outlined"
+                                    <TextField className={css.Input} id="outlined-basic" label="Назва лікарні"
+                                               variant="outlined"
                                                style={{"margin": "15px 0"}}
                                                type={"text"} fullWidth
-                                               value={name}
-                                               onChange={(e) => setName(e.target.value)}
+                                               value={hospitalName}
+                                               onChange={(e) => setHospitalName(e.target.value)}
+                                    />
+                                    <TextField className={css.Input} id="outlined-basic" label="Місто" variant="outlined"
+                                               style={{"margin": "15px 0"}}
+                                               type={"text"} fullWidth
+                                               value={city}
+                                               onChange={(e) => setCity(e.target.value)}
+                                    />
+                                    <TextField className={css.Input} id="outlined-basic" label="Район" variant="outlined"
+                                               style={{"margin": "15px 0"}}
+                                               type={"text"} fullWidth
+                                               value={district}
+                                               onChange={(e) => setDistrict(e.target.value)}
+                                    />
+                                    <TextField className={css.Input} id="outlined-basic" label="Область" variant="outlined"
+                                               style={{"margin": "15px 0"}}
+                                               type={"text"} fullWidth
+                                               value={region}
+                                               onChange={(e) => setRegion(e.target.value)}
+                                    />
+                                    <TextField className={css.Input} id="outlined-basic" label="Вулиця" variant="outlined"
+                                               style={{"margin": "15px 0"}}
+                                               type={"text"} fullWidth
+                                               value={street}
+                                               onChange={(e) => setStreet(e.target.value)}
+                                    />
+                                    <TextField className={css.Input} id="outlined-basic" label="Номер будинку"
+                                               variant="outlined"
+                                               style={{"margin": "15px 0"}}
+                                               type={"text"} fullWidth
+                                               value={numberBuild}
+                                               onChange={(e) => setNumberBuild(e.target.value)}
                                     />
                                 </div>
                             }
                         </div>
-
+                        <TextField className={css.Input} id="outlined-basic" label="Email" variant="outlined"
+                                   style={{"margin": "15px 0"}}
+                                   type={"text"} fullWidth
+                                   value={email}
+                                   onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <TextField className={css.Input} id="outlined-basic" label="Пароль" variant="outlined"
+                                   style={{"margin": "15px 0"}}
+                                   type={"password"} fullWidth
+                                   value={password}
+                                   onChange={(e) => setPassword(e.target.value)}
+                        />
                         <Button id={css.Button} variant="contained" onClick={handleClick}>
                             Зареєструватись
                         </Button>
                     </form>
-                    {/*{(answer === 0 && auth === true) && <h4 className={css.Error}>Ви ввели невірно дані</h4>}*/}
                 </Paper>
             </Container>
         </div>
